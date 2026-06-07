@@ -2,6 +2,8 @@
 
 純前端房屋比較工具，資料儲存於瀏覽器 LocalStorage。
 
+[👉 開啟網頁](https://lin0603.github.io/taibao-houses)
+
 ## 功能
 - 新增/編輯/刪除看房紀錄
 - 自動計算每坪單價
