@@ -1,5 +1,29 @@
 [
   {
+    "name": "林森國小寧靜小透天",
+    "type": "房屋",
+    "subtype": "透天厝",
+    "price_total": 328.0,
+    "price_per_ping": 15.3,
+    "land_ping": null,
+    "build_ping": 21.45,
+    "age": 53.8,
+    "layout": "3房",
+    "floor": 2,
+    "station_time": null,
+    "score": null,
+    "url": "https://www.rakuya.com.tw/sell_item/info?ehid=0207ff29876541c",
+    "tags": [
+      "裝潢美宅",
+      "孝親房",
+      "格局方正",
+      "近商圈"
+    ],
+    "district": "690東區",
+    "city": "嘉義市",
+    "scraped_at": "2026-06-08T12:28:44.938138"
+  },
+  {
     "name": "全新整理太保嘉義市台南近82水上交流道租屋不如買房",
     "type": "房屋",
     "subtype": "透天厝",
