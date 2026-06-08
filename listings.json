@@ -1,5 +1,63 @@
 [
   {
+    "name": "崎子頭透天",
+    "type": "房屋",
+    "subtype": "透天厝",
+    "price_total": 498.0,
+    "price_per_ping": 15.3,
+    "land_ping": null,
+    "build_ping": 32.62,
+    "age": 47.8,
+    "layout": "3房",
+    "floor": 2,
+    "station_time": null,
+    "score": null,
+    "url": "https://www.rakuya.com.tw/sell_item/info?ehid=0fb22d299503711",
+    "tags": [
+      "雙衛浴",
+      "孝親房"
+    ],
+    "district": "608水上鄉",
+    "city": "嘉義縣",
+    "scraped_at": "2026-06-08T18:00:26.442866",
+    "image_url": "https://static.rakuya.com.tw/r1/n371/6e/71/29950371_1_b.jpeg?1772561854",
+    "analysis": {
+      "name": "崎子頭透天",
+      "price_score": 15,
+      "env_score": 20,
+      "trend_score": 24,
+      "total_score": 59,
+      "rating": "🌟🌟🌟",
+      "price_per_ping": 15.3,
+      "market_comparison": "高於行情 39.1%，建議議價或尋找替代方案",
+      "location_assessment": "基本條件",
+      "future_potential": "中",
+      "target_buyer": "首購族、通勤族、退休族",
+      "hold_advice": "長期持有（3-5年）",
+      "advice": "中規中矩，需確認個人需求匹配度",
+      "analyzed_at": "2026-06-08T18:00:33.866078",
+      "pricing_details": {
+        "score": 15,
+        "price_per_ping": 15.3,
+        "market_price": 11,
+        "diff_pct": 39.1,
+        "comment": "高於行情 39.1%，建議議價或尋找替代方案"
+      },
+      "env_details": {
+        "score": 20,
+        "transport_rating": "偏弱",
+        "details": "基本條件"
+      },
+      "trend_details": {
+        "score": 24,
+        "details": "嘉義縣市近年受高鐵嘉義站、故宮南院帶動；水上鄉近交流道、台鐵，交通區位佳；透天厝土地使用彈性大，未來有都更/改建空間；屋齡 47.8 年，需評估修繕成本，但有都更潛力",
+        "potential": "中",
+        "target_buyer": "首購族、通勤族、退休族",
+        "hold_advice": "長期持有（3-5年）"
+      }
+    }
+  },
+  {
     "name": "虎尾交流道旁優質農地",
     "type": "房屋",
     "subtype": "",
