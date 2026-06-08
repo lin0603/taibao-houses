@@ -1,5 +1,131 @@
 [
   {
+    "name": "林森國小寧靜小透天",
+    "type": "房屋",
+    "subtype": "透天厝",
+    "price_total": 328.0,
+    "price_per_ping": 15.3,
+    "land_ping": null,
+    "build_ping": 21.45,
+    "age": 53.8,
+    "layout": "3房",
+    "floor": 2,
+    "station_time": null,
+    "score": null,
+    "url": "https://www.rakuya.com.tw/sell_item/info?ehid=0207ff29876541c",
+    "tags": [
+      "裝潢美宅",
+      "孝親房",
+      "格局方正",
+      "近商圈"
+    ],
+    "district": "690東區",
+    "city": "嘉義市",
+    "scraped_at": "2026-06-08T18:09:23.866075",
+    "image_url": "https://static.rakuya.com.tw/r2/n541/15/d4/29876541_1_b.jpeg?1751446955",
+    "analysis": {
+      "name": "林森國小寧靜小透天",
+      "price_score": 28,
+      "env_score": 22,
+      "trend_score": 19,
+      "total_score": 69,
+      "rating": "🌟🌟🌟",
+      "price_per_ping": 15.3,
+      "market_comparison": "大幅低於行情 30.5%，可能撿便宜或需確認瑕疵",
+      "location_assessment": "格局方正（空間利用率高）",
+      "future_potential": "中",
+      "target_buyer": "首購族、通勤族、退休族",
+      "hold_advice": "長期持有（3-5年）",
+      "advice": "中規中矩，需確認個人需求匹配度",
+      "analyzed_at": "2026-06-08T18:10:14.614869",
+      "pricing_details": {
+        "score": 28,
+        "price_per_ping": 15.3,
+        "market_price": 22,
+        "diff_pct": -30.5,
+        "comment": "大幅低於行情 30.5%，可能撿便宜或需確認瑕疵"
+      },
+      "env_details": {
+        "score": 22,
+        "transport_rating": "偏弱",
+        "details": "格局方正（空間利用率高）"
+      },
+      "trend_details": {
+        "score": 19,
+        "details": "嘉義縣市近年受高鐵嘉義站、故宮南院帶動；透天厝土地使用彈性大，未來有都更/改建空間；屋齡 53.8 年，需評估修繕成本，但有都更潛力",
+        "potential": "中",
+        "target_buyer": "首購族、通勤族、退休族",
+        "hold_advice": "長期持有（3-5年）"
+      }
+    }
+  },
+  {
+    "name": "全新整理太保嘉義市台南近82水上交流道租屋不如買房",
+    "type": "房屋",
+    "subtype": "透天厝",
+    "price_total": 345.0,
+    "price_per_ping": 12.4,
+    "land_ping": null,
+    "build_ping": 27.9,
+    "age": 46,
+    "layout": "5房",
+    "floor": 2,
+    "station_time": null,
+    "score": null,
+    "url": "https://www.rakuya.com.tw/sell_item/info?ehid=0efb94342507984",
+    "tags": [
+      "廁所開窗",
+      "前後陽台",
+      "房間皆有窗",
+      "有露臺",
+      "格局方正",
+      "近台鐵",
+      "近公車站",
+      "近交流道",
+      "近快速道路",
+      "屋主自售"
+    ],
+    "district": "608水上鄉",
+    "city": "嘉義縣",
+    "scraped_at": "2026-06-08T18:08:56.879522",
+    "image_url": "https://static.rakuya.com.tw/r2/n798/30/94/34250798_26_b.jpeg?1780628425",
+    "analysis": {
+      "name": "全新整理太保嘉義市台南近82水上交流道租屋不如買房",
+      "price_score": 20,
+      "env_score": 35,
+      "trend_score": 24,
+      "total_score": 79,
+      "rating": "🌟🌟🌟🌟",
+      "price_per_ping": 12.4,
+      "market_comparison": "略高於行情 12.7%，需確認是否有額外價值",
+      "location_assessment": "近台鐵（通勤族加分）；近公車站（無車族加分）；近交流道（跨縣市通勤加分）；近快速道路（開車族加分）；廁所開窗（通風好）；格局方正（空間利用率高）；前後陽台（採光通風佳）；房間皆有窗（居住品質加分）；有露臺（休閒空間加分）；屋主自售（免仲介費，議價空間可能較大）",
+      "future_potential": "中",
+      "target_buyer": "首購族、通勤族、退休族",
+      "hold_advice": "長期持有（3-5年）",
+      "advice": "值得考慮，整體條件良好",
+      "analyzed_at": "2026-06-08T18:09:43.562478",
+      "pricing_details": {
+        "score": 20,
+        "price_per_ping": 12.4,
+        "market_price": 11,
+        "diff_pct": 12.7,
+        "comment": "略高於行情 12.7%，需確認是否有額外價值"
+      },
+      "env_details": {
+        "score": 35,
+        "transport_rating": "優良",
+        "details": "近台鐵（通勤族加分）；近公車站（無車族加分）；近交流道（跨縣市通勤加分）；近快速道路（開車族加分）；廁所開窗（通風好）；格局方正（空間利用率高）；前後陽台（採光通風佳）；房間皆有窗（居住品質加分）；有露臺（休閒空間加分）；屋主自售（免仲介費，議價空間可能較大）"
+      },
+      "trend_details": {
+        "score": 24,
+        "details": "嘉義縣市近年受高鐵嘉義站、故宮南院帶動；水上鄉近交流道、台鐵，交通區位佳；透天厝土地使用彈性大，未來有都更/改建空間；屋齡 46 年，需評估修繕成本，但有都更潛力",
+        "potential": "中",
+        "target_buyer": "首購族、通勤族、退休族",
+        "hold_advice": "長期持有（3-5年）"
+      }
+    }
+  },
+  {
     "name": "崎子頭透天",
     "type": "房屋",
     "subtype": "透天厝",
