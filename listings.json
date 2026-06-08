@@ -1,5 +1,57 @@
 [
   {
+    "name": "水上便宜透天",
+    "type": "房屋",
+    "subtype": "",
+    "price_total": 430.0,
+    "price_per_ping": 0,
+    "land_ping": null,
+    "build_ping": 0,
+    "age": 0,
+    "layout": "",
+    "floor": 0,
+    "station_time": null,
+    "score": null,
+    "url": "https://buy.u-trust.com.tw/house/7079587",
+    "tags": [],
+    "district": "",
+    "city": "",
+    "scraped_at": "2026-06-08T18:13:39.305326",
+    "image_url": "https://yccdn.yungching.com.tw/v1/image/?key=NF58Ko5oaCugBNve7oBAVDdKzVZ3CMXZGB5xUX_3E4Z3LZaEYqcrICzpgy-EnzrNqVhtUUJ4lA_cF1mBh5MY1RWd5eEaa7mn9qxu8f6s-rtKfVoBsurTgAnsNQ3b1ueVZBTVyE902uGua3iB7hgAAKPHTL2hxmCpYvJvW1CAemDnYnc5rlQbkFlxKzOddph2lckgJWQKtaPidrW-SgVAJ0q8fIjcFGU-hQFGymqo8g21doSW1ZZihP_njpYuw4QnprJ-indaUcKBd9hk8aZg8MnUezEOQMv6i9KPzq5D21B8MW899PE8ynnpmkhF_dmrIO2l_YXPGQr925gg1d9mkG3RFRGXpmVP&width=1200&height=1200",
+    "analysis": {
+      "name": "水上便宜透天",
+      "price_score": 0,
+      "env_score": 20,
+      "trend_score": 17,
+      "total_score": 37,
+      "rating": "🌟",
+      "price_per_ping": 0,
+      "market_comparison": "",
+      "location_assessment": "基本條件",
+      "future_potential": "中",
+      "target_buyer": "首購族",
+      "hold_advice": "長期持有",
+      "advice": "不推薦，有明顯缺點",
+      "analyzed_at": "2026-06-08T18:13:44.159178",
+      "pricing_details": {
+        "score": 0,
+        "details": "缺少價格或坪數資料，無法分析"
+      },
+      "env_details": {
+        "score": 20,
+        "transport_rating": "偏弱",
+        "details": "基本條件"
+      },
+      "trend_details": {
+        "score": 17,
+        "details": "屋齡僅 0 年，屋況佳",
+        "potential": "中",
+        "target_buyer": "首購族",
+        "hold_advice": "長期持有"
+      }
+    }
+  },
+  {
     "name": "林森國小寧靜小透天",
     "type": "房屋",
     "subtype": "透天厝",
