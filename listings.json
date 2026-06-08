@@ -1,5 +1,57 @@
 [
   {
+    "name": "住宅用地,建地|【後壁白沙屯67坪建地】惠双新營店出售 - 591土地出售",
+    "type": "房屋",
+    "subtype": "建地",
+    "price_total": 180.0,
+    "price_per_ping": 0,
+    "land_ping": null,
+    "build_ping": 0,
+    "age": 0,
+    "layout": "",
+    "floor": 0,
+    "station_time": null,
+    "score": null,
+    "url": "https://land.591.com.tw/sale/20118432",
+    "tags": [],
+    "district": "台南市後壁區住宅用地,建地出售，總價180萬，面積67坪，位於白沙屯段",
+    "city": "台南市",
+    "scraped_at": "2026-06-08T22:35:12.476863",
+    "image_url": "https://img1.591.com.tw/house/2026/04/30/177752789972518309.jpg!730x460.water2.jpg",
+    "analysis": {
+      "name": "住宅用地,建地|【後壁白沙屯67坪建地】惠双新營店出售 - 591土地出售",
+      "price_score": 0,
+      "env_score": 20,
+      "trend_score": 23,
+      "total_score": 43,
+      "rating": "🌟🌟",
+      "price_per_ping": 0,
+      "market_comparison": "",
+      "location_assessment": "基本條件",
+      "future_potential": "中",
+      "target_buyer": "換屋族、投資客",
+      "hold_advice": "中長期持有",
+      "advice": "條件一般，建議多看多比較",
+      "analyzed_at": "2026-06-08T22:35:26.974868",
+      "pricing_details": {
+        "score": 0,
+        "details": "缺少價格或坪數資料，無法分析"
+      },
+      "env_details": {
+        "score": 20,
+        "transport_rating": "偏弱",
+        "details": "基本條件"
+      },
+      "trend_details": {
+        "score": 23,
+        "details": "台南市為直轄市，生活機能完善；屋齡僅 0 年，屋況佳",
+        "potential": "中",
+        "target_buyer": "換屋族、投資客",
+        "hold_advice": "中長期持有"
+      }
+    }
+  },
+  {
     "name": "水上便宜透天",
     "type": "房屋",
     "subtype": "",
