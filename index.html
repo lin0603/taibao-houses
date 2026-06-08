@@ -207,11 +207,25 @@
 <script>
 const LS_KEY = 'taibao-houses';
 let items = [];
+let scrapedItems = []; // 來自樂屋網爬蟲的資料
 
 try { items = JSON.parse(localStorage.getItem(LS_KEY)) || []; } catch(e) {}
 
 function saveLS() {
   localStorage.setItem(LS_KEY, JSON.stringify(items));
+}
+
+// 載入樂屋網爬取資料
+async function loadScrapedData() {
+  try {
+    const resp = await fetch('listings.json?v=' + Date.now());
+    if (!resp.ok) return;
+    scrapedItems = await resp.json();
+    console.log('已載入樂屋網資料:', scrapedItems.length, '筆');
+    render();
+  } catch(e) {
+    console.log('樂屋網資料載入失敗:', e);
+  }
 }
 
 function uuid() {
@@ -306,6 +320,9 @@ function fmtNum(n) {
 }
 
 function unitPrice(it) {
+  if (it._isScraped) {
+    return it.price_per_ping || '-';
+  }
   const area = it.land || it.build || 0;
   if (it.price && area) return (it.price / area).toFixed(1);
   return '-';
@@ -313,13 +330,21 @@ function unitPrice(it) {
 
 function render() {
   const sort = document.getElementById('sort').value;
-  const list = [...items];
-  if (sort === 'price-asc') list.sort((a,b) => a.price - b.price);
-  else if (sort === 'price-desc') list.sort((a,b) => b.price - a.price);
+  
+  // 合併手動新增的 items 和爬取的 scrapedItems
+  const allItems = [...items, ...scrapedItems.map(s => ({
+    ...s,
+    _isScraped: true,
+    id: 'scraped-' + (s.url ? s.url.split('ehid=')[1] || Math.random().toString(36) : Math.random().toString(36))
+  }))];
+  
+  const list = [...allItems];
+  if (sort === 'price-asc') list.sort((a,b) => (a.price || a.price_total || 0) - (b.price || b.price_total || 0));
+  else if (sort === 'price-desc') list.sort((a,b) => (b.price || b.price_total || 0) - (a.price || a.price_total || 0));
   else if (sort === 'unit-asc') list.sort((a,b) => parseFloat(unitPrice(a)) - parseFloat(unitPrice(b)) || 0);
   else if (sort === 'unit-desc') list.sort((a,b) => parseFloat(unitPrice(b)) - parseFloat(unitPrice(a)) || 0);
-  else if (sort === 'rating') list.sort((a,b) => b.rating - a.rating);
-  else list.sort((a,b) => b.added - a.added);
+  else if (sort === 'rating') list.sort((a,b) => (b.rating || 0) - (a.rating || 0));
+  else list.sort((a,b) => (b.added || Date.now()) - (a.added || Date.parse(b[' scraped_at']) || 0));
 
   const grid = document.getElementById('grid');
   document.getElementById('count').textContent = `共 ${list.length} 筆`;
@@ -330,29 +355,44 @@ function render() {
   }
 
   grid.innerHTML = list.map(it => {
-    const up = unitPrice(it);
+    const isScraped = it._isScraped;
+    const price = isScraped ? it.price_total : it.price;
+    const area = isScraped ? it.build_ping : (it.land || it.build || 0);
+    const up = isScraped ? it.price_per_ping : unitPrice(it);
+    const typeLabel = isScraped ? (it.subtype || it.type) : (it.type === 'land' ? '土地' : '房屋');
+    const typeClass = isScraped ? 'house' : it.type;
+    const layoutStr = isScraped ? it.layout : (it.layout || '-');
+    const ageStr = isScraped ? (it.age ? it.age + ' 年' : '-') : (it.age ? it.age + ' 年' : '-');
+    const distStr = isScraped ? '-' : (it.dist ? it.dist + ' 分' : '-');
+    const ratingStr = isScraped ? '-' : stars(it.rating);
+    const notesStr = isScraped ? (it.tags ? it.tags.join(' · ') : '') : (it.notes || '');
+    const linkStr = isScraped ? it.url : (it.link || '');
+    const locationStr = isScraped ? `${it.city || ''}${it.district || ''}` : '';
+    
     return `
-    <div class="card" onclick="openModal('${it.id}')">
+    <div class="card" ${!isScraped ? `onclick="openModal('${it.id}')"` : `onclick="window.open('${linkStr}', '_blank')" style="cursor:pointer;"`}>
       <div class="card-header">
         <div>
-          <div class="card-title">${it.name}</div>
+          <div class="card-title">${it.name || it.title || ''}</div>
           <div style="margin-top:.35rem;">
-            <span class="tag tag-type-${it.type}">${it.type==='land'?'土地':'房屋'}</span>
-            <span class="tag tag-price">總價 ${fmtNum(it.price)} 萬</span>
+            <span class="tag tag-type-${typeClass}">${typeLabel}</span>
+            ${isScraped ? '<span class="tag" style="background:#7c3aed;color:#ddd6fe;">🤖 樂屋網</span>' : ''}
+            <span class="tag tag-price">總價 ${fmtNum(price)} 萬</span>
             <span class="tag tag-unit">每坪 ${up} 萬</span>
           </div>
         </div>
       </div>
       <div class="info-grid">
-        <div>地坪 <span>${fmtNum(it.land)} 坪</span></div>
-        <div>建坪 <span>${fmtNum(it.build)} 坪</span></div>
-        <div>屋齡 <span>${it.age ? it.age + ' 年' : '-'}</span></div>
-        <div>格局 <span>${it.layout || '-'}</span></div>
-        <div>距車站 <span>${it.dist ? it.dist + ' 分' : '-'}</span></div>
-        <div>評分 <span class="rating">${stars(it.rating)}</span></div>
+        <div>地坪 <span>${isScraped ? '-' : fmtNum(it.land)} 坪</span></div>
+        <div>建坪 <span>${fmtNum(area)} 坪</span></div>
+        <div>屋齡 <span>${ageStr}</span></div>
+        <div>格局 <span>${layoutStr}</span></div>
+        <div>距車站 <span>${distStr}</span></div>
+        <div>評分 <span class="rating">${ratingStr}</span></div>
       </div>
-      ${it.notes ? `<div class="notes">${it.notes.replace(/</g,'&lt;')}</div>` : ''}
-      ${it.link ? `<div class="link"><a href="${it.link.replace(/"/g,'&quot;')}" target="_blank" onclick="event.stopPropagation()">🔗 看物件連結</a></div>` : ''}
+      ${locationStr ? `<div style="font-size:.8rem;color:var(--muted);margin-top:.3rem;">📍 ${locationStr}</div>` : ''}
+      ${notesStr ? `<div class="notes">${notesStr.replace(/</g,'&lt;')}</div>` : ''}
+      ${linkStr ? `<div class="link"><a href="${linkStr.replace(/"/g,'&quot;')}" target="_blank" onclick="event.stopPropagation()">🔗 看物件連結</a></div>` : ''}
     </div>`;
   }).join('');
 }
@@ -386,6 +426,7 @@ function importJSON(input) {
   input.value = '';
 }
 
+loadScrapedData();
 render();
 </script>
 </body>
