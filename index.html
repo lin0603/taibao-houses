@@ -344,7 +344,7 @@ function render() {
   else if (sort === 'unit-asc') list.sort((a,b) => parseFloat(unitPrice(a)) - parseFloat(unitPrice(b)) || 0);
   else if (sort === 'unit-desc') list.sort((a,b) => parseFloat(unitPrice(b)) - parseFloat(unitPrice(a)) || 0);
   else if (sort === 'rating') list.sort((a,b) => (b.rating || 0) - (a.rating || 0));
-  else list.sort((a,b) => (b.added || Date.now()) - (a.added || Date.parse(b[' scraped_at']) || 0));
+  else list.sort((a,b) => (b.added || Date.parse(b['scraped_at']) || Date.now()) - (a.added || Date.parse(a['scraped_at']) || 0));
 
   const grid = document.getElementById('grid');
   document.getElementById('count').textContent = `共 ${list.length} 筆`;
