@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>太保市春珠里162號 店面租金評估報告</title>
+<style>
+  :root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --accent: #38bdf8;
+    --accent2: #34d399;
+    --danger: #f87171;
+    --warning: #fbbf24;
+    --border: #334155;
+    --grade-a: #34d399;
+    --grade-b: #fbbf24;
+    --grade-c: #f87171;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+    background: var(--bg); color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.7;
+  }
+  header {
+    padding: 1.2rem 1rem; text-align: center;
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 10;
+  }
+  header h1 { margin: 0; font-size: 1.3rem; color: var(--accent); }
+  header p { margin: .3rem 0 0; font-size: .85rem; color: var(--muted); }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 1rem; }
+  .nav-back {
+    display: inline-flex; align-items: center; gap: .35rem;
+    color: var(--accent); text-decoration: none; font-size: .9rem;
+    margin-bottom: 1rem;
+  }
+  .nav-back:hover { color: #7dd3fc; }
+  .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: .75rem; padding: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  .card h2 {
+    margin: 0 0 .8rem; font-size: 1.15rem;
+    color: var(--accent); border-bottom: 2px solid var(--border);
+    padding-bottom: .6rem;
+  }
+  .card h3 {
+    margin: 1.2rem 0 .6rem; font-size: 1rem;
+    color: var(--accent2);
+  }
+  table {
+    width: 100%; border-collapse: collapse;
+    font-size: .9rem; margin: .8rem 0;
+  }
+  th, td { padding: .7rem .5rem; text-align: left; border-bottom: 1px solid var(--border); }
+  th { background: rgba(255,255,255,.05); color: var(--muted); font-weight: 600; }
+  tr:hover { background: rgba(255,255,255,.03); }
+  .grade-a { color: var(--grade-a); font-weight: 700; }
+  .grade-b { color: var(--grade-b); font-weight: 700; }
+  .grade-c { color: var(--grade-c); font-weight: 700; }
+  .highlight-row { background: rgba(52,211,153,.08) !important; }
+  .danger-row { background: rgba(248,113,113,.08) !important; }
+  .info-box {
+    background: rgba(56,189,248,.08); border-left: 3px solid var(--accent);
+    padding: 1rem; border-radius: 0 .4rem .4rem 0; margin: 1rem 0;
+  }
+  .highlight-box {
+    background: rgba(52,211,153,.08); border-left: 3px solid var(--accent2);
+    padding: 1rem; border-radius: 0 .4rem .4rem 0; margin: 1rem 0;
+  }
+  .warning-box {
+    background: rgba(248,113,113,.08); border-left: 3px solid var(--danger);
+    padding: 1rem; border-radius: 0 .4rem .4rem 0; margin: 1rem 0;
+  }
+  .cost-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+  .cost-card {
+    background: rgba(255,255,255,.03); border: 1px solid var(--border);
+    border-radius: .6rem; padding: 1rem;
+  }
+  .cost-card h4 { margin: 0 0 .6rem; color: var(--accent); font-size: .95rem; }
+  .tag {
+    display: inline-block; padding: .25rem .6rem; border-radius: 1rem;
+    font-size: .8rem; margin: .2rem; font-weight: 500;
+  }
+  .tag-a { background: rgba(52,211,153,.15); color: var(--grade-a); }
+  .tag-b { background: rgba(251,191,36,.15); color: var(--grade-b); }
+  .tag-c { background: rgba(248,113,113,.15); color: var(--grade-c); }
+  .metrics { display: grid; grid-template-columns: repeat(auto-fit,minmax(140px,1fr)); gap: .75rem; margin: 1rem 0; }
+  .metric {
+    background: rgba(56,189,248,.1); border: 1px solid rgba(56,189,248,.2);
+    border-radius: .6rem; padding: 1rem; text-align: center;
+  }
+  .metric .num { font-size: 1.8rem; font-weight: 700; color: var(--accent); }
+  .metric .lbl { font-size: .8rem; color: var(--muted); margin-top: .3rem; }
+  ul, ol { margin: .5rem 0 .5rem 1.2rem; }
+  li { margin: .4rem 0; }
+  .footer {
+    text-align: center; padding: 2rem 1rem;
+    color: var(--muted); font-size: .85rem;
+  }
+  @media (max-width: 640px) {
+    .cost-grid { grid-template-columns: 1fr; }
+    table { font-size: .8rem; }
+    th, td { padding: .5rem .3rem; }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>📋 嘉義縣太保市春珠里162號</h1>
+    <p>店面租金評估報告｜40坪臨路店面 + 2樓 + 停車場10台</p>
+  </header>
+
+  <div class="wrap">
+    <a href="./index.html" class="nav-back">← 返回看屋筆記</a>
+    <a href="./convenience-store-report.html" class="nav-back" style="color: #fbbf24; margin-left: 1rem;">🛒 中南部B/C分析報告 →</a>
+
+    <!-- 物件基本資料 -->
+    <div class="card">
+      <h2>🏠 物件基本資料</h2>
+      <table>
+        <tr><th>項目</th><th>內容</th></tr>
+        <tr><td>地址</td><td>嘉義縣太保市春珠里162號</td></tr>
+        <tr><td>總樓層</td><td>2 層樓</td></tr>
+        <tr><td>1樓面積</td><td>40 坪（臨主要道路）</td></tr>
+        <tr><td>2樓面積</td><td>約 20 坪</td></tr>
+        <tr><td>停車場</td><td>10 台車位</td></tr>
+        <tr><td>出入口</td><td>目前共用，可改為獨立出入口</td></tr>
+        <tr><td>周邊競爭</td><td>500 公尺內 1 家便利商店</td></tr>
+        <tr><td>晚間人流</td><td>晚上 8 點後稀少</td></tr>
+        <tr><td>車速</td><td>一般（可停車消費）</td></tr>
+      </table>
+    </div>
+
+    <!-- 區位分析 -->
+    <div class="card">
+      <h2>📍 區位條件分析</h2>
+      <table>
+        <tr><th>條件</th><th>評估</th><th>對租金影響</th></tr>
+        <tr><td>臨主要道路</td><td class="grade-a">✅</td><td>+10-15%</td></tr>
+        <tr><td>車速一般</td><td class="grade-a">✅</td><td>可停車消費</td></tr>
+        <tr><td>競爭者僅1家</td><td class="grade-a">✅</td><td>市場未飽和</td></tr>
+        <tr><td>停車場10台</td><td class="grade-a">✅ 大加分</td><td>+1-1.5萬/月</td></tr>
+        <tr><td>晚間人流稀少</td><td class="grade-b">⚠️</td><td>-10-15%</td></tr>
+        <tr><td>春珠里位置</td><td class="grade-b">⚠️</td><td>非核心商圈</td></tr>
+      </table>
+      <div class="info-box">
+        <strong>太保市環境：</strong>嘉義縣政府所在地，人口約3.7萬，近高鐵嘉義站，上班族客源穩定。春珠里位於太保市區域，但非縣政府正門口商圈。
+      </div>
+    </div>
+
+    <!-- 租金評估 -->
+    <div class="card">
+      <h2>💰 單一樓層租金評估</h2>
+      <h3>1樓 40坪（臨路店面）</h3>
+      <table>
+        <tr><th>路段等級</th><th>租金（元/坪/月）</th><th>40坪月租</th></tr>
+        <tr><td>縣政府周邊核心</td><td>2,000-3,000</td><td>8-12 萬</td></tr>
+        <tr><td>春珠里主要道路</td><td>1,500-2,200</td><td>6-8.8 萬</td></tr>
+        <tr class="highlight-row"><td><strong>晚間折價後建議</strong></td><td><strong>1,200-1,800</strong></td><td><strong>4.8-7.2 萬</strong></td></tr>
+      </table>
+      <p>建議 <strong>1樓開價：5-6 萬/月</strong></p>
+
+      <h3>停車場 10台</h3>
+      <table>
+        <tr><th>每車位租金</th><th>10台總價</th></tr>
+        <tr><td>500-1,000/月</td><td>5,000-10,000/月</td></tr>
+      </table>
+      <p>建議 <strong>停車場開價：1 萬/月（10台打包）</strong></p>
+    </div>
+
+    <!-- 兩層樓評估 -->
+    <div class="card">
+      <h2>🏢 兩層樓空間評估</h2>
+      <table>
+        <tr><th>方案</th><th>說明</th><th>月租金建議</th></tr>
+        <tr><td>A. 整租（1+2樓）</td><td>2樓當倉庫</td><td>7-7.5 萬</td></tr>
+        <tr class="highlight-row"><td><strong>B. 分租（最推薦）</strong></td><td>1樓便利商店 + 2樓獨立出租</td><td><strong>8-9 萬</strong></td></tr>
+        <tr><td>C. 只租1樓</td><td>2樓保留自用</td><td>6-7 萬</td></tr>
+      </table>
+      <div class="highlight-box">
+        <strong>分租 vs 整租比較：</strong><br>
+        整租便利商店：7-7.5 萬/月（年84-90萬）<br>
+        分租（1樓+2樓）：8-9 萬/月（年96-108萬）<br>
+        <strong>分租每年多賺 12-18 萬</strong>
+      </div>
+    </div>
+
+    <!-- 改裝分析 -->
+    <div class="card">
+      <h2>🔧 改裝獨立出入口分析</h2>
+      <h3>改裝成本</h3>
+      <table>
+        <tr><th>方式</th><th>費用</th></tr>
+        <tr><td>側面/後面開門+內樓梯</td><td>5-10 萬</td></tr>
+        <tr><td>外掛樓梯+門</td><td>15-25 萬</td></tr>
+        <tr><td>正面開門+樓梯</td><td>20-35 萬</td></tr>
+      </table>
+      <h3>回本試算</h3>
+      <table>
+        <tr><th>改裝成本</th><th>年增收益</th><th>回本時間</th></tr>
+        <tr><td>10 萬</td><td>12 萬</td><td class="grade-a">10 個月</td></tr>
+        <tr><td>15 萬</td><td>15 萬</td><td class="grade-a">12 個月</td></tr>
+        <tr><td>20 萬</td><td>18 萬</td><td class="grade-a">13 個月</td></tr>
+      </table>
+      <div class="info-box">
+        <strong>結論：</strong>改裝費用約 1 年回本，之後每年淨賺 12-18 萬。但必須先確認便利商店是否願意只租1樓，否則改裝無意義。
+      </div>
+    </div>
+
+    <!-- 承租方比較 -->
+    <div class="card">
+      <h2>🛒 不同承租方比較</h2>
+      <h3>方案一：便利商店</h3>
+      <table>
+        <tr><th>項目</th><th>評估</th></tr>
+        <tr><td>1樓需求</td><td>35-40 坪</td></tr>
+        <tr><td>2樓需求</td><td>倉庫（付倉庫價）</td></tr>
+        <tr><td>停車場</td><td>需要 5-10 台</td></tr>
+        <tr><td>租期</td><td>3-5 年</td></tr>
+        <tr><td>整租開價</td><td class="grade-a">7-7.5 萬/月</td></tr>
+        <tr><td>只租1樓開價</td><td>6.5 萬/月</td></tr>
+      </table>
+      <div class="highlight-box">
+        <strong>優點：</strong>租金高、品牌穩定、續約率高<br>
+        <strong>缺點：</strong>可能要求整棟租、需配合品牌裝潢
+      </div>
+
+      <h3>方案二：蝦皮店到店</h3>
+      <table>
+        <tr><th>項目</th><th>評估</th></tr>
+        <tr><td>1樓需求</td><td>15-25 坪就夠（40坪過大）</td></tr>
+        <tr><td>2樓需求</td><td>倉庫（包裹處理）</td></tr>
+        <tr><td>停車場</td><td>非常需要（物流車+顧客）</td></tr>
+        <tr><td>租期</td><td>通常 3 年</td></tr>
+        <tr><td>整租開價</td><td class="grade-b">5-6 萬/月</td></tr>
+      </table>
+      <div class="warning-box">
+        <strong>優點：</strong>單純好管理<br>
+        <strong>缺點：</strong>租金較低、利潤薄、續約談判可能較難
+      </div>
+
+      <h3>方案比較總表</h3>
+      <table>
+        <tr><th>方案</th><th>月租總額</th><th>年租金</th></tr>
+        <tr class="highlight-row"><td><strong>分租（便利1樓+2樓獨立）</strong></td><td><strong>8-9 萬</strong></td><td><strong>96-108 萬</strong></td></tr>
+        <tr><td>便利商店（整租）</td><td>7-7.5 萬</td><td>84-90 萬</td></tr>
+        <tr><td>便利商店（只租1樓）</td><td>6.5 萬</td><td>78 萬</td></tr>
+        <tr><td>蝦皮店到店（整租）</td><td>5-6 萬</td><td>60-72 萬</td></tr>
+      </table>
+    </div>
+
+    <!-- 最終建議 -->
+    <div class="card">
+      <h2>🎯 最終開價建議</h2>
+      <table>
+        <tr><th>承租方</th><th>條件</th><th>建議開價</th></tr>
+        <tr><td>便利商店（整租1+2樓）</td><td>含停車場10台</td><td class="grade-a">7.5 萬/月</td></tr>
+        <tr><td>便利商店（只租1樓）</td><td>含停車場10台</td><td>6.5 萬/月</td></tr>
+        <tr><td>蝦皮店到店（整租）</td><td>含停車場10台</td><td>5.5-6 萬/月</td></tr>
+        <tr class="highlight-row"><td><strong>分租（1樓便利+2樓獨立）</strong></td><td>改獨立出入口</td><td><strong>1樓 6.5 萬 + 2樓 1.5-2.5 萬</strong></td></tr>
+      </table>
+      <div class="info-box">
+        <strong>談判籌碼：</strong><br>
+        1. 500公尺內只有1家便利商店 → 區域稀缺<br>
+        2. 10台停車場 → 便利商店/蝦皮剛需<br>
+        3. 臨主要道路 → 曝光度高<br>
+        4. 縣政府所在地 → 上班族穩定客源
+      </div>
+    </div>
+
+    <!-- 合約建議 -->
+    <div class="card">
+      <h2>📝 合約條件建議</h2>
+      <table>
+        <tr><th>條款</th><th>建議內容</th></tr>
+        <tr><td>租期</td><td>至少3年，5年更佳</td></tr>
+        <tr><td>押金</td><td>3-6個月租金（約18-45萬）</td></tr>
+        <tr><td>租金調漲</td><td>第3年起每年調漲3-5%</td></tr>
+        <tr><td>停車場</td><td>10台車位專用，不得再租他人</td></tr>
+        <tr><td>用途限制</td><td>限定零售/物流業</td></tr>
+        <tr><td>優先續租權</td><td>地主有優先決定權</td></tr>
+        <tr><td>改裝補償</td><td>退租時裝潢歸地主或要求復原</td></tr>
+      </table>
+    </div>
+
+    <!-- 行動建議 -->
+    <div class="card">
+      <h2>✅ 行動建議</h2>
+      <div class="highlight-box">
+        <h4>立即行動（1-2週）</h4>
+        <ol>
+          <li>確認2樓改獨立出入口可行性（找建築師估價 10-20萬）</li>
+          <li>與便利商店接洽，開價 7萬（整租）或 6.5萬（只租1樓）</li>
+          <li>備案：蝦皮店到店，開價 5.5-6萬</li>
+        </ol>
+      </div>
+      <div class="info-box">
+        <h4>中長期規劃（1-3個月）</h4>
+        <ol>
+          <li>如果便利商店只租1樓 → 執行2樓改裝</li>
+          <li>2樓找獨立租客（辦公室/工作室/網拍）</li>
+          <li>目標：1樓 6.5萬 + 2樓 2萬 = <strong>8.5萬/月</strong></li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 總結 -->
+    <div class="card">
+      <h2>📊 總結</h2>
+      <div class="metrics">
+        <div class="metric"><div class="num">8.5萬</div><div class="lbl">最佳月租目標</div></div>
+        <div class="metric"><div class="num">102萬</div><div class="lbl">最佳年租金</div></div>
+        <div class="metric"><div class="num">13個月</div><div class="lbl">改裝回本</div></div>
+        <div class="metric"><div class="num">12-18萬</div><div class="lbl">年增收益</div></div>
+      </div>
+      <div class="highlight-box">
+        <strong>核心建議：</strong><br>
+        1. 優先談便利商店，開價 7萬（整租）或 6.5萬（只租1樓）<br>
+        2. 如果只租1樓，花10-20萬改獨立出入口，分租2樓<br>
+        3. 改裝回本約1年，之後每年淨賺12-18萬<br>
+        4. 蝦皮當備案，開價 5.5-6萬
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>產出日期：2026-06-09</p>
+      <p>評估物件：嘉義縣太保市春珠里162號</p>
+      <p>報告性質：租金開價評估與承租策略分析</p>
+      <p style="color: var(--danger); margin-top: .5rem;">⚠️ 實際租金需視個別租客條件與議價結果調整</p>
+    </div>
+  </div>
+</body>
+</html>
