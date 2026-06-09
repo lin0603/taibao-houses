@@ -1,5 +1,169 @@
 [
   {
+    "name": "住宅用地,建地|【後壁白沙屯67坪建地】惠双新營店出售 - 591土地出售",
+    "type": "房屋",
+    "subtype": "建地",
+    "price_total": 180.0,
+    "price_per_ping": 0,
+    "land_ping": null,
+    "build_ping": 0,
+    "age": 0,
+    "layout": "",
+    "floor": 0,
+    "station_time": null,
+    "score": null,
+    "url": "https://land.591.com.tw/sale/20118432",
+    "tags": [],
+    "district": "台南市後壁區住宅用地,建地出售，總價180萬，面積67坪，位於白沙屯段",
+    "city": "台南市",
+    "scraped_at": "2026-06-08T22:35:12.476863",
+    "image_url": "https://img1.591.com.tw/house/2026/04/30/177752789972518309.jpg!730x460.water2.jpg",
+    "analysis": {
+      "name": "住宅用地,建地|【後壁白沙屯67坪建地】惠双新營店出售 - 591土地出售",
+      "price_score": 0,
+      "env_score": 20,
+      "trend_score": 23,
+      "total_score": 43,
+      "rating": "🌟🌟",
+      "price_per_ping": 0,
+      "market_comparison": "",
+      "location_assessment": "基本條件",
+      "future_potential": "中",
+      "target_buyer": "換屋族、投資客",
+      "hold_advice": "中長期持有",
+      "advice": "條件一般，建議多看多比較",
+      "analyzed_at": "2026-06-08T22:35:26.974868",
+      "pricing_details": {
+        "score": 0,
+        "details": "缺少價格或坪數資料，無法分析"
+      },
+      "env_details": {
+        "score": 20,
+        "transport_rating": "偏弱",
+        "details": "基本條件"
+      },
+      "trend_details": {
+        "score": 23,
+        "details": "台南市為直轄市，生活機能完善；屋齡僅 0 年，屋況佳",
+        "potential": "中",
+        "target_buyer": "換屋族、投資客",
+        "hold_advice": "中長期持有"
+      }
+    }
+  },
+  {
+    "name": "水上便宜透天",
+    "type": "房屋",
+    "subtype": "",
+    "price_total": 430.0,
+    "price_per_ping": 0,
+    "land_ping": null,
+    "build_ping": 0,
+    "age": 0,
+    "layout": "",
+    "floor": 0,
+    "station_time": null,
+    "score": null,
+    "url": "https://buy.u-trust.com.tw/house/7079587",
+    "tags": [],
+    "district": "",
+    "city": "",
+    "scraped_at": "2026-06-08T18:13:39.305326",
+    "image_url": "https://yccdn.yungching.com.tw/v1/image/?key=NF58Ko5oaCugBNve7oBAVDdKzVZ3CMXZGB5xUX_3E4Z3LZaEYqcrICzpgy-EnzrNqVhtUUJ4lA_cF1mBh5MY1RWd5eEaa7mn9qxu8f6s-rtKfVoBsurTgAnsNQ3b1ueVZBTVyE902uGua3iB7hgAAKPHTL2hxmCpYvJvW1CAemDnYnc5rlQbkFlxKzOddph2lckgJWQKtaPidrW-SgVAJ0q8fIjcFGU-hQFGymqo8g21doSW1ZZihP_njpYuw4QnprJ-indaUcKBd9hk8aZg8MnUezEOQMv6i9KPzq5D21B8MW899PE8ynnpmkhF_dmrIO2l_YXPGQr925gg1d9mkG3RFRGXpmVP&width=1200&height=1200",
+    "analysis": {
+      "name": "水上便宜透天",
+      "price_score": 0,
+      "env_score": 20,
+      "trend_score": 17,
+      "total_score": 37,
+      "rating": "🌟",
+      "price_per_ping": 0,
+      "market_comparison": "",
+      "location_assessment": "基本條件",
+      "future_potential": "中",
+      "target_buyer": "首購族",
+      "hold_advice": "長期持有",
+      "advice": "不推薦，有明顯缺點",
+      "analyzed_at": "2026-06-08T18:13:44.159178",
+      "pricing_details": {
+        "score": 0,
+        "details": "缺少價格或坪數資料，無法分析"
+      },
+      "env_details": {
+        "score": 20,
+        "transport_rating": "偏弱",
+        "details": "基本條件"
+      },
+      "trend_details": {
+        "score": 17,
+        "details": "屋齡僅 0 年，屋況佳",
+        "potential": "中",
+        "target_buyer": "首購族",
+        "hold_advice": "長期持有"
+      }
+    }
+  },
+  {
+    "name": "林森國小寧靜小透天",
+    "type": "房屋",
+    "subtype": "透天厝",
+    "price_total": 328.0,
+    "price_per_ping": 15.3,
+    "land_ping": null,
+    "build_ping": 21.45,
+    "age": 53.8,
+    "layout": "3房",
+    "floor": 2,
+    "station_time": null,
+    "score": null,
+    "url": "https://www.rakuya.com.tw/sell_item/info?ehid=0207ff29876541c",
+    "tags": [
+      "裝潢美宅",
+      "孝親房",
+      "格局方正",
+      "近商圈"
+    ],
+    "district": "690東區",
+    "city": "嘉義市",
+    "scraped_at": "2026-06-08T18:09:23.866075",
+    "image_url": "https://static.rakuya.com.tw/r2/n541/15/d4/29876541_1_b.jpeg?1751446955",
+    "analysis": {
+      "name": "林森國小寧靜小透天",
+      "price_score": 28,
+      "env_score": 22,
+      "trend_score": 19,
+      "total_score": 69,
+      "rating": "🌟🌟🌟",
+      "price_per_ping": 15.3,
+      "market_comparison": "大幅低於行情 30.5%，可能撿便宜或需確認瑕疵",
+      "location_assessment": "格局方正（空間利用率高）",
+      "future_potential": "中",
+      "target_buyer": "首購族、通勤族、退休族",
+      "hold_advice": "長期持有（3-5年）",
+      "advice": "中規中矩，需確認個人需求匹配度",
+      "analyzed_at": "2026-06-08T18:10:14.614869",
+      "pricing_details": {
+        "score": 28,
+        "price_per_ping": 15.3,
+        "market_price": 22,
+        "diff_pct": -30.5,
+        "comment": "大幅低於行情 30.5%，可能撿便宜或需確認瑕疵"
+      },
+      "env_details": {
+        "score": 22,
+        "transport_rating": "偏弱",
+        "details": "格局方正（空間利用率高）"
+      },
+      "trend_details": {
+        "score": 19,
+        "details": "嘉義縣市近年受高鐵嘉義站、故宮南院帶動；透天厝土地使用彈性大，未來有都更/改建空間；屋齡 53.8 年，需評估修繕成本，但有都更潛力",
+        "potential": "中",
+        "target_buyer": "首購族、通勤族、退休族",
+        "hold_advice": "長期持有（3-5年）"
+      }
+    }
+  },
+  {
     "name": "全新整理太保嘉義市台南近82水上交流道租屋不如買房",
     "type": "房屋",
     "subtype": "透天厝",
@@ -27,6 +191,100 @@
     ],
     "district": "608水上鄉",
     "city": "嘉義縣",
-    "scraped_at": "2026-06-08T07:25:02.197002"
+    "scraped_at": "2026-06-08T18:08:56.879522",
+    "image_url": "https://static.rakuya.com.tw/r2/n798/30/94/34250798_26_b.jpeg?1780628425",
+    "analysis": {
+      "name": "全新整理太保嘉義市台南近82水上交流道租屋不如買房",
+      "price_score": 20,
+      "env_score": 35,
+      "trend_score": 24,
+      "total_score": 79,
+      "rating": "🌟🌟🌟🌟",
+      "price_per_ping": 12.4,
+      "market_comparison": "略高於行情 12.7%，需確認是否有額外價值",
+      "location_assessment": "近台鐵（通勤族加分）；近公車站（無車族加分）；近交流道（跨縣市通勤加分）；近快速道路（開車族加分）；廁所開窗（通風好）；格局方正（空間利用率高）；前後陽台（採光通風佳）；房間皆有窗（居住品質加分）；有露臺（休閒空間加分）；屋主自售（免仲介費，議價空間可能較大）",
+      "future_potential": "中",
+      "target_buyer": "首購族、通勤族、退休族",
+      "hold_advice": "長期持有（3-5年）",
+      "advice": "值得考慮，整體條件良好",
+      "analyzed_at": "2026-06-08T18:09:43.562478",
+      "pricing_details": {
+        "score": 20,
+        "price_per_ping": 12.4,
+        "market_price": 11,
+        "diff_pct": 12.7,
+        "comment": "略高於行情 12.7%，需確認是否有額外價值"
+      },
+      "env_details": {
+        "score": 35,
+        "transport_rating": "優良",
+        "details": "近台鐵（通勤族加分）；近公車站（無車族加分）；近交流道（跨縣市通勤加分）；近快速道路（開車族加分）；廁所開窗（通風好）；格局方正（空間利用率高）；前後陽台（採光通風佳）；房間皆有窗（居住品質加分）；有露臺（休閒空間加分）；屋主自售（免仲介費，議價空間可能較大）"
+      },
+      "trend_details": {
+        "score": 24,
+        "details": "嘉義縣市近年受高鐵嘉義站、故宮南院帶動；水上鄉近交流道、台鐵，交通區位佳；透天厝土地使用彈性大，未來有都更/改建空間；屋齡 46 年，需評估修繕成本，但有都更潛力",
+        "potential": "中",
+        "target_buyer": "首購族、通勤族、退休族",
+        "hold_advice": "長期持有（3-5年）"
+      }
+    }
+  },
+  {
+    "name": "崎子頭透天",
+    "type": "房屋",
+    "subtype": "透天厝",
+    "price_total": 498.0,
+    "price_per_ping": 15.3,
+    "land_ping": null,
+    "build_ping": 32.62,
+    "age": 47.8,
+    "layout": "3房",
+    "floor": 2,
+    "station_time": null,
+    "score": null,
+    "url": "https://www.rakuya.com.tw/sell_item/info?ehid=0fb22d299503711",
+    "tags": [
+      "雙衛浴",
+      "孝親房"
+    ],
+    "district": "608水上鄉",
+    "city": "嘉義縣",
+    "scraped_at": "2026-06-08T18:00:26.442866",
+    "image_url": "https://static.rakuya.com.tw/r1/n371/6e/71/29950371_1_b.jpeg?1772561854",
+    "analysis": {
+      "name": "崎子頭透天",
+      "price_score": 15,
+      "env_score": 20,
+      "trend_score": 24,
+      "total_score": 59,
+      "rating": "🌟🌟🌟",
+      "price_per_ping": 15.3,
+      "market_comparison": "高於行情 39.1%，建議議價或尋找替代方案",
+      "location_assessment": "基本條件",
+      "future_potential": "中",
+      "target_buyer": "首購族、通勤族、退休族",
+      "hold_advice": "長期持有（3-5年）",
+      "advice": "中規中矩，需確認個人需求匹配度",
+      "analyzed_at": "2026-06-08T18:00:33.866078",
+      "pricing_details": {
+        "score": 15,
+        "price_per_ping": 15.3,
+        "market_price": 11,
+        "diff_pct": 39.1,
+        "comment": "高於行情 39.1%，建議議價或尋找替代方案"
+      },
+      "env_details": {
+        "score": 20,
+        "transport_rating": "偏弱",
+        "details": "基本條件"
+      },
+      "trend_details": {
+        "score": 24,
+        "details": "嘉義縣市近年受高鐵嘉義站、故宮南院帶動；水上鄉近交流道、台鐵，交通區位佳；透天厝土地使用彈性大，未來有都更/改建空間；屋齡 47.8 年，需評估修繕成本，但有都更潛力",
+        "potential": "中",
+        "target_buyer": "首購族、通勤族、退休族",
+        "hold_advice": "長期持有（3-5年）"
+      }
+    }
   }
 ]
