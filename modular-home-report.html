@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>組合屋(廠商A)評估報告 - 安駐一號/二號/蘋果艙</title>
+<style>
+  :root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --accent: #38bdf8;
+    --accent2: #34d399;
+    --danger: #f87171;
+    --warning: #fbbf24;
+    --border: #334155;
+    --grade-a: #34d399;
+    --grade-b: #fbbf24;
+    --grade-c: #f87171;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+    background: var(--bg); color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.7;
+  }
+  header {
+    padding: 1.2rem 1rem; text-align: center;
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 10;
+  }
+  header h1 { margin: 0; font-size: 1.3rem; color: var(--accent); }
+  header p { margin: .3rem 0 0; font-size: .85rem; color: var(--muted); }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 1rem; }
+  .nav-back {
+    display: inline-flex; align-items: center; gap: .35rem;
+    color: var(--accent); text-decoration: none; font-size: .9rem;
+    margin-bottom: 1rem;
+  }
+  .nav-back:hover { color: #7dd3fc; }
+  .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: .75rem; padding: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  .card h2 {
+    margin: 0 0 .8rem; font-size: 1.15rem;
+    color: var(--accent); border-bottom: 2px solid var(--border);
+    padding-bottom: .6rem;
+  }
+  .card h3 {
+    margin: 1.2rem 0 .6rem; font-size: 1rem;
+    color: var(--accent2);
+  }
+  table {
+    width: 100%; border-collapse: collapse;
+    font-size: .9rem; margin: .8rem 0;
+  }
+  th, td { padding: .7rem .5rem; text-align: left; border-bottom: 1px solid var(--border); }
+  th { background: rgba(255,255,255,.05); color: var(--muted); font-weight: 600; }
+  tr:hover { background: rgba(255,255,255,.03); }
+  .grade-a { color: var(--grade-a); font-weight: 700; }
+  .grade-b { color: var(--grade-b); font-weight: 700; }
+  .grade-c { color: var(--grade-c); font-weight: 700; }
+  .highlight-row { background: rgba(52,211,153,.08) !important; }
+  .danger-row { background: rgba(248,113,113,.08) !important; }
+  .info-box {
+    background: rgba(56,189,248,.08); border-left: 3px solid var(--accent);
+    padding: 1rem; border-radius: 0 .4rem .4rem 0; margin: 1rem 0;
+  }
+  .highlight-box {
+    background: rgba(52,211,153,.08); border-left: 3px solid var(--accent2);
+    padding: 1rem; border-radius: 0 .4rem .4rem 0; margin: 1rem 0;
+  }
+  .warning-box {
+    background: rgba(248,113,113,.08); border-left: 3px solid var(--danger);
+    padding: 1rem; border-radius: 0 .4rem .4rem 0; margin: 1rem 0;
+  }
+  .cost-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+  .cost-card {
+    background: rgba(255,255,255,.03); border: 1px solid var(--border);
+    border-radius: .6rem; padding: 1rem;
+  }
+  .cost-card h4 { margin: 0 0 .6rem; color: var(--accent); font-size: .95rem; }
+  .tag {
+    display: inline-block; padding: .25rem .6rem; border-radius: 1rem;
+    font-size: .8rem; margin: .2rem; font-weight: 500;
+  }
+  .tag-a { background: rgba(52,211,153,.15); color: var(--grade-a); }
+  .tag-b { background: rgba(251,191,36,.15); color: var(--grade-b); }
+  .tag-c { background: rgba(248,113,113,.15); color: var(--grade-c); }
+  .metrics { display: grid; grid-template-columns: repeat(auto-fit,minmax(140px,1fr)); gap: .75rem; margin: 1rem 0; }
+  .metric {
+    background: rgba(56,189,248,.1); border: 1px solid rgba(56,189,248,.2);
+    border-radius: .6rem; padding: 1rem; text-align: center;
+  }
+  .metric .num { font-size: 1.8rem; font-weight: 700; color: var(--accent); }
+  .metric .lbl { font-size: .8rem; color: var(--muted); margin-top: .3rem; }
+  ul, ol { margin: .5rem 0 .5rem 1.2rem; }
+  li { margin: .4rem 0; }
+  .footer {
+    text-align: center; padding: 2rem 1rem;
+    color: var(--muted); font-size: .85rem;
+  }
+  .product-img {
+    background: rgba(255,255,255,.05);
+    border-radius: .6rem;
+    padding: 1rem;
+    text-align: center;
+    margin: .5rem 0;
+  }
+  .product-img .placeholder {
+    font-size: 3rem;
+    margin-bottom: .5rem;
+  }
+  @media (max-width: 640px) {
+    .cost-grid { grid-template-columns: 1fr; }
+    table { font-size: .8rem; }
+    th, td { padding: .5rem .3rem; }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>🏠 組合屋(廠商A)評估報告</h1>
+    <p>安駐一號 · 安駐二號 · 蘋果艙</p>
+  </header>
+
+  <div class="wrap">
+    <a href="./index.html" class="nav-back">← 返回看屋筆記</a>
+    <a href="./taibao-store-report.html" class="nav-back" style="color: #fbbf24; margin-left: 1rem;">📋 太保市春珠里162號評估 →</a>
+
+    <!-- 執行摘要 -->
+    <div class="card">
+      <h2>📋 執行摘要</h2>
+      <p>本報告評估「廠商A」三種組合屋產品（安駐一號、二號、蘋果艙）作為投資物種的可行性。關鍵發現：產品強調「可合法申請建照、使照、取得權狀」，若屬實則為合法建物，用途大開。</p>
+      <div class="metrics">
+        <div class="metric"><div class="num">3</div><div class="lbl">產品型號</div></div>
+        <div class="metric"><div class="num">15.3坪</div><div class="lbl">最大室內面積</div></div>
+        <div class="metric"><div class="num">200-350萬</div><div class="lbl">總價預估</div></div>
+        <div class="metric"><div class="num">3-4年</div><div class="lbl">民宿回本</div></div>
+      </div>
+      <div class="info-box">
+        <strong>💡 核心結論：</strong>不適合做便利商店（空間太小），但適合做合法民宿（如果建照可行）或辦公工作室。與太保市春珠里162號原有建物搭配，可形成「便利商店+民宿」複合收益模式。
+      </div>
+    </div>
+
+    <!-- 產品介紹 -->
+    <div class="card">
+      <h2>📦 產品介紹</h2>
+      
+      <div class="product-img">
+        <div class="placeholder">🏠</div>
+        <h3>安駐一號 · 平房式</h3>
+        <p>單層設計，最穩定，適合長期居住</p>
+      </div>
+      <table>
+        <tr><th>規格</th><th>數據</th></tr>
+        <tr><td>尺寸</td><td>6.4-12.5m × 4m × 3.8m</td></tr>
+        <tr><td>室內面積</td><td>7.85-15.3 坪</td></tr>
+        <tr><td>含陽台</td><td>12.5-25.4 坪</td></tr>
+        <tr><td>稅前價格</td><td>125-184 萬</td></tr>
+        <tr><td>適住人數</td><td>3-4 人</td></tr>
+      </table>
+
+      <div class="product-img">
+        <div class="placeholder">🏢</div>
+        <h3>安駐二號 · 兩層樓</h3>
+        <p>上下層設計，空間利用率高</p>
+      </div>
+      <table>
+        <tr><th>規格</th><th>數據</th></tr>
+        <tr><td>尺寸</td><td>6.4-12.5m × 4m × 3.8m</td></tr>
+        <tr><td>室內面積</td><td>15.3 坪（上下層）</td></tr>
+        <tr><td>含陽台</td><td>25.4 坪</td></tr>
+        <tr><td>稅前價格</td><td>130-200 萬</td></tr>
+        <tr><td>適住人數</td><td>3-4 人</td></tr>
+      </table>
+
+      <div class="product-img">
+        <div class="placeholder">🍎</div>
+        <h3>蘋果艙 · 膠囊式</h3>
+        <p>最現代設計，觀光感強</p>
+      </div>
+      <table>
+        <tr><th>規格</th><th>數據</th></tr>
+        <tr><td>尺寸</td><td>6-12.1m × 4m × 3.8m</td></tr>
+        <tr><td>室內面積</td><td>7.35-14.75 坪</td></tr>
+        <tr><td>含陽台</td><td>12.3-24.5 坪</td></tr>
+        <tr><td>稅前價格</td><td>117-177 萬</td></tr>
+        <tr><td>適住人數</td><td>3-4 人</td></tr>
+      </table>
+    </div>
+
+    <!-- 成本分析 -->
+    <div class="card">
+      <h2>💰 總成本分析</h2>
+      <h3>空艙本體價格</h3>
+      <table>
+        <tr><th>產品</th><th>空艙價格</th></tr>
+        <tr><td>安駐一號（最小）</td><td>125 萬</td></tr>
+        <tr><td>安駐一號（最大）</td><td>184 萬</td></tr>
+        <tr><td>安駐二號</td><td>130-200 萬</td></tr>
+        <tr><td>蘋果艙（最小）</td><td>117 萬</td></tr>
+        <tr><td>蘋果艙（最大）</td><td>177 萬</td></tr>
+      </table>
+
+      <h3>附加費用</h3>
+      <table>
+        <tr><th>項目</th><th>價格</th></tr>
+        <tr><td>標準衛浴</td><td>12 萬/套</td></tr>
+        <tr><td>標準隔間</td><td>5 萬/套</td></tr>
+        <tr><td>陽台</td><td>3.5-5 萬/坪</td></tr>
+        <tr><td>運輸</td><td>依距離（約 5-15 萬）</td></tr>
+        <tr><td>基礎工程</td><td>20-40 萬</td></tr>
+        <tr><td>水電接駁</td><td>10-20 萬</td></tr>
+      </table>
+
+      <div class="highlight-box">
+        <h4>總預估成本（單台）</h4>
+        <p>小型（7-8坪）：<strong>150-200 萬</strong></p>
+        <p>大型（14-15坪）：<strong>250-350 萬</strong></p>
+      </div>
+    </div>
+
+    <!-- 合法建照分析 -->
+    <div class="card">
+      <h2>⚖️ 合法建照分析</h2>
+      <div class="info-box">
+        <strong>產品強調：「可合法申請建照、使照、取得權狀」</strong>
+        <p>這是關鍵差異點。如果屬實，則為合法建物，非臨時建築。</p>
+      </div>
+      
+      <h3>合法 vs 非法 比較</h3>
+      <table>
+        <tr><th>項目</th><th>合法建照</th><th>臨時建築</th></tr>
+        <tr><td>產權</td><td class="grade-a">✅ 可取得權狀</td><td class="grade-c">❌ 無產權</td></tr>
+        <tr><td>商業登記</td><td class="grade-a">✅ 可登記</td><td class="grade-c">❌ 困難</td></tr>
+        <tr><td>民宿申請</td><td class="grade-a">✅ 可申請</td><td class="grade-c">❌ 不可</td></tr>
+        <tr><td>銀行貸款</td><td class="grade-a">✅ 可抵押</td><td class="grade-c">❌ 無法</td></tr>
+        <tr><td>轉售</td><td class="grade-a">✅ 可買賣</td><td class="grade-c">❌ 難脫手</td></tr>
+        <tr><td>使用年限</td><td class="grade-a">✅ 50年以上</td><td class="grade-c">❌ 2-20年</td></tr>
+      </table>
+
+      <div class="warning-box">
+        <h4>⚠️ 必須確認的事項</h4>
+        <ol>
+          <li><strong>土地地目</strong>：建地？農地？農地不能放</li>
+          <li><strong>建蔽率/容積率</strong>：是否會超過？</li>
+          <li><strong>建築線</strong>：是否需要退縮？</li>
+          <li><strong>申請流程</strong>：時間多久？費用多少？</li>
+          <li><strong>地方建管</strong>：嘉義縣是否已有成功案例？</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 用途分析 -->
+    <div class="card">
+      <h2>🎯 用途分析</h2>
+      
+      <h3>❌ 不適合：便利商店</h3>
+      <table>
+        <tr><th>問題</th><th>說明</th></tr>
+        <tr><td>空間不足</td><td>最大15坪，便利商店需35-50坪</td></tr>
+        <tr><td>貨架動線</td><td>4m寬度，走道+貨架+櫃台太擠</td></tr>
+        <tr><td>物流補貨</td><td>需要卸貨區，空間不夠</td></tr>
+        <tr><td>設備電力</td><td>標準配電可能不足冷凍設備</td></tr>
+      </table>
+      <div class="warning-box">
+        <strong>結論：</strong>15坪組合屋無法做便利商店。需要傳統建物（如162號1樓40坪）。
+      </div>
+
+      <h3>✅ 適合：合法民宿</h3>
+      <table>
+        <tr><th>項目</th><th>分析</th></tr>
+        <tr><td>空間</td><td>15坪可做2-3人房，舒適</td></tr>
+        <tr><td>設計</td><td>現代感，拍照好看，適合網紅打卡</td></tr>
+        <tr><td>地點</td><td>太保近高鐵，商務客+轉機客</td></tr>
+        <tr><td>定價</td><td>每晚 2,500-4,000</td></tr>
+        <tr><td>月營收</td><td>60%入住率，月 4.5-7.2 萬</td></tr>
+        <tr><td>回本</td><td>約 3-4 年（單台）</td></tr>
+      </table>
+      <div class="highlight-box">
+        <strong>優勢：</strong>建物成本200萬，比傳統建築便宜。若可拿使照，可申請合法民宿，永續經營。
+      </div>
+
+      <h3>⚠️ 可行：辦公/工作室</h3>
+      <table>
+        <tr><th>項目</th><th>分析</th></tr>
+        <tr><td>空間</td><td>15坪適合1-3人工作室</td></tr>
+        <tr><td>月租</td><td>8,000-15,000</td></tr>
+        <tr><td>需求</td><td>獨立門牌、合法地址</td></tr>
+        <tr><td>競爭</td><td>太保市選擇多，租金不高</td></tr>
+      </table>
+      <div class="info-box">
+        <strong>結論：</strong>可做，但租金天花板低。不如民宿收益好。
+      </div>
+
+      <h3>⚠️ 有條件：輕食/咖啡外帶</h3>
+      <table>
+        <tr><th>項目</th><th>分析</th></tr>
+        <tr><td>法規</td><td>需要商業登記+衛生許可</td></tr>
+        <tr><td>空間</td><td>15坪只能做外帶，不能內用</td></tr>
+        <tr><td>設備</td><td>需改裝給水、排水、電力</td></tr>
+        <tr><td>競爭</td><td>與便利商店競爭，風險大</td></tr>
+      </table>
+      <div class="warning-box">
+        <strong>結論：</strong>15坪太擠，且與便利商店競爭。不建議。
+      </div>
+    </div>
+
+    <!-- B/C分析 -->
+    <div class="card">
+      <h2>📈 B/C 分析（民宿情境）</h2>
+      <table>
+        <tr><th>項目</th><th>金額</th></tr>
+        <tr><td>建物成本（15坪）</td><td>250-350 萬</td></tr>
+        <tr><td>每晚定價</td><td>2,500-4,000</td></tr>
+        <tr><td>入住率</td><td>60%</td></tr>
+        <tr><td>月營收</td><td>4.5-7.2 萬</td></tr>
+        <tr><td>月營運成本</td><td>1.5-2.5 萬（水電、清潔、平台費）</td></tr>
+        <tr><td>月淨利</td><td>3-4.7 萬</td></tr>
+        <tr><td>回本週期</td><td>53-117 個月（4.4-9.7 年）</td></tr>
+      </table>
+      <div class="info-box">
+        <strong>保守估計：</strong>如果定價 3,000/晚、入住率 60%，月淨利約 3.5 萬，回本約 7 年。若提升定價或入住率，回本可縮短至 3-4 年。
+      </div>
+    </div>
+
+    <!-- 組合方案 -->
+    <div class="card">
+      <h2>🏘️ 與春珠里162號組合方案</h2>
+      <div class="highlight-box">
+        <h4>複合收益模式</h4>
+        <p>原有建物 + 組合屋 = 最大化土地收益</p>
+      </div>
+      
+      <table>
+        <tr><th>設施</th><th>面積</th><th>用途</th><th>月租/營收</th></tr>
+        <tr><td>1樓</td><td>40坪</td><td>便利商店</td><td>6.5 萬</td></tr>
+        <tr><td>2樓</td><td>20坪</td><td>辦公/工作室</td><td>1.5 萬</td></tr>
+        <tr><td>組合屋A</td><td>15坪</td><td>民宿</td><td>5.5 萬</td></tr>
+        <tr><td>組合屋B</td><td>15坪</td><td>民宿</td><td>5.5 萬</td></tr>
+        <tr><td>組合屋C</td><td>15坪</td><td>民宿</td><td>5.5 萬</td></tr>
+        <tr><td>停車場</td><td>10台</td><td>共用</td><td>—</td></tr>
+        <tr class="highlight-row"><td><strong>合計</strong></td><td>—</td><td>—</td><td><strong>24.5 萬/月</strong></td></tr>
+      </table>
+
+      <div class="info-box">
+        <strong>總投資：</strong>
+        <ul>
+          <li>原有建物：不需額外投資</li>
+          <li>3台組合屋：約 600-900 萬</li>
+          <li>基礎+水電+裝修：約 100-150 萬</li>
+          <li><strong>總計：700-1,050 萬</strong></li>
+        </ul>
+      </div>
+
+      <div class="highlight-box">
+        <strong>總收益：</strong>
+        <ul>
+          <li>年租金：294 萬</li>
+          <li>回本週期：約 3-4 年</li>
+          <li>長期資產：合法建物+民宿執照</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 風險與建議 -->
+    <div class="card">
+      <h2>⚠️ 風險與建議</h2>
+      <div class="warning-box">
+        <h4>主要風險</h4>
+        <ol>
+          <li><strong>建照不確定性</strong>：產品聲稱可申請，但實際流程可能複雜</li>
+          <li><strong>土地限制</strong>：農地不能放，建地需確認建蔽率</li>
+          <li><strong>民宿法規</strong>：嘉義縣可能有特殊限制</li>
+          <li><strong>總價不確定</strong>：廣告價格為空艙，實際總價可能翻倍</li>
+          <li><strong>維護成本</strong>：組合屋長期維護費用未知</li>
+        </ol>
+      </div>
+      <div class="highlight-box">
+        <h4>建議行動</h4>
+        <ol>
+          <li>向廠商索取「建照申請成功案例」證明</li>
+          <li>向嘉義縣建管處確認申請流程</li>
+          <li>確認土地地目（建地/農地）</li>
+          <li>索取詳細報價（含運輸+基礎+水電）</li>
+          <li>實地參觀已完工案例</li>
+          <li>評估民宿市場需求（查詢附近民宿入住率）</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 結論 -->
+    <div class="card">
+      <h2>📊 結論</h2>
+      <div class="metrics">
+        <div class="metric"><div class="num">7.5</div><div class="lbl">年回本（最佳）</div></div>
+        <div class="metric"><div class="num">294萬</div><div class="lbl">年總收益</div></div>
+        <div class="metric"><div class="num">3-4年</div><div class="lbl">組合屋回本</div></div>
+        <div class="metric"><div class="num">900萬</div><div class="lbl">總投資預估</div></div>
+      </div>
+      <div class="info-box">
+        <strong>最終建議：</strong>
+        <p>組合屋不適合單獨做便利商店，但適合做合法民宿（若建照可行）。與春珠里162號原有建物搭配，形成「便利商店+民宿」複合收益模式，總收益可達月 24.5 萬，年 294 萬。</p>
+        <p>關鍵前提：<strong>必須確認建照可行、土地合法、民宿法規允許</strong>。</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>產出日期：2026-06-09</p>
+      <p>評估產品：安駐一號/二號/蘋果艙（廠商A）</p>
+      <p>報告性質：組合屋投資可行性評估</p>
+      <p style="color: var(--danger); margin-top: .5rem;">⚠️ 實際可行性需視建照申請結果與土地條件確認</p>
+    </div>
+  </div>
+</body>
+</html>
