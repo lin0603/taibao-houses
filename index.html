@@ -28,6 +28,25 @@
     position: sticky; top: 0; z-index: 10;
   }
   header h1 { margin: 0; font-size: 1.4rem; color: var(--accent); }
+  .nav-links {
+    display: flex; gap: 1rem; justify-content: center; margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+  .nav-links a {
+    color: var(--accent); text-decoration: none;
+    padding: .5rem 1rem; border: 1px solid var(--accent);
+    border-radius: 2rem; font-size: .85rem;
+    transition: all .3s ease;
+  }
+  .nav-links a:hover {
+    background: var(--accent); color: var(--bg);
+  }
+  .nav-links a.highlight {
+    border-color: var(--accent2); color: var(--accent2);
+  }
+  .nav-links a.highlight:hover {
+    background: var(--accent2); color: var(--bg);
+  }
   header p { margin: .3rem 0 0; font-size: .85rem; color: var(--muted); }
   .wrap { max-width: 960px; margin: 0 auto; padding: 1rem; }
   .btn {
@@ -107,7 +126,10 @@
 </head>
 <body>
 <header>
-  <div style="text-align:center; padding: .5rem 0 0;"><a href="./convenience-store-report.html" style="color: #fbbf24; font-size: .85rem; text-decoration: none;">🛒 中南部省道便利商店 B/C 分析報告 →</a></div>
+  <div style="text-align:center; padding: .5rem 0 0;">
+    <a href="./convenience-store-report.html" style="color: #fbbf24; font-size: .85rem; text-decoration: none; margin: 0 .5rem;">🛒 中南部B/C分析報告 →</a>
+    <a href="./taibao-store-report.html" style="color: #34d399; font-size: .85rem; text-decoration: none; margin: 0 .5rem;">📋 太保市春珠里162號評估 →</a>
+  </div>
   <h1>🏠 嘉義太保 · 看屋筆記</h1>
   <p>比較、記錄、決策 — 買房前不慌</p>
 </header>
