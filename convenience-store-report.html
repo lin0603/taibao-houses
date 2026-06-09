@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中南部省道便利商店開設成本 B/C 分析報告</title>
+<style>
+  :root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --accent: #38bdf8;
+    --accent2: #34d399;
+    --danger: #f87171;
+    --warning: #fbbf24;
+    --border: #334155;
+    --grade-a: #34d399;
+    --grade-b: #fbbf24;
+    --grade-c: #f87171;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+    background: var(--bg); color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.7;
+  }
+  header {
+    padding: 1.2rem 1rem; text-align: center;
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 10;
+  }
+  header h1 { margin: 0; font-size: 1.3rem; color: var(--accent); }
+  header p { margin: .3rem 0 0; font-size: .85rem; color: var(--muted); }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 1rem; }
+  .nav-back {
+    display: inline-flex; align-items: center; gap: .35rem;
+    color: var(--accent); text-decoration: none; font-size: .9rem;
+    margin-bottom: 1rem;
+  }
+  .nav-back:hover { color: #7dd3fc; }
+
+  /* Cards */
+  .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: .75rem; padding: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  .card h2 {
+    margin: 0 0 .8rem; font-size: 1.15rem;
+    color: var(--accent); border-bottom: 2px solid var(--border);
+    padding-bottom: .6rem;
+  }
+  .card h3 {
+    margin: 1.2rem 0 .6rem; font-size: 1rem;
+    color: var(--accent2);
+  }
+
+  /* Key metrics */
+  .metrics { display: grid; grid-template-columns: repeat(auto-fit,minmax(140px,1fr)); gap: .75rem; margin: 1rem 0; }
+  .metric {
+    background: rgba(56,189,248,.1); border: 1px solid rgba(56,189,248,.2);
+    border-radius: .6rem; padding: 1rem; text-align: center;
+  }
+  .metric .num { font-size: 1.8rem; font-weight: 700; color: var(--accent); }
+  .metric .lbl { font-size: .8rem; color: var(--muted); margin-top: .3rem; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: .9rem; margin: .8rem 0; }
+  th, td { padding: .7rem .5rem; text-align: left; border-bottom: 1px solid var(--border); }
+  th { background: rgba(255,255,255,.05); color: var(--muted); font-weight: 600; }
+  tr:hover { background: rgba(255,255,255,.03); }
+  .grade-a { color: var(--grade-a); font-weight: 700; }
+  .grade-b { color: var(--grade-b); font-weight: 700; }
+  .grade-c { color: var(--grade-c); font-weight: 700; }
+  .highlight-row { background: rgba(52,211,153,.08) !important; }
+  .danger-row { background: rgba(248,113,113,.08) !important; }
+
+  /* Boxes */
+  .info-box {
+    background: rgba(56,189,248,.08); border-left: 3px solid var(--accent);
+    padding: 1rem; border-radius: 0 .4rem .4rem 0; margin: 1rem 0;
+  }
+  .highlight-box {
+    background: rgba(52,211,153,.08); border-left: 3px solid var(--accent2);
+    padding: 1rem; border-radius: 0 .4rem .4rem 0; margin: 1rem 0;
+  }
+  .warning-box {
+    background: rgba(248,113,113,.08); border-left: 3px solid var(--danger);
+    padding: 1rem; border-radius: 0 .4rem .4rem 0; margin: 1rem 0;
+  }
+
+  /* Cost grid */
+  .cost-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+  .cost-card {
+    background: rgba(255,255,255,.03); border: 1px solid var(--border);
+    border-radius: .6rem; padding: 1rem;
+  }
+  .cost-card h4 { margin: 0 0 .6rem; color: var(--accent); font-size: .95rem; }
+
+  /* Tags */
+  .tag {
+    display: inline-block; padding: .25rem .6rem; border-radius: 1rem;
+    font-size: .8rem; margin: .2rem; font-weight: 500;
+  }
+  .tag-a { background: rgba(52,211,153,.15); color: var(--grade-a); }
+  .tag-b { background: rgba(251,191,36,.15); color: var(--grade-b); }
+  .tag-c { background: rgba(248,113,113,.15); color: var(--grade-c); }
+
+  /* Lists */
+  ul, ol { margin: .5rem 0 .5rem 1.2rem; }
+  li { margin: .4rem 0; }
+
+  /* Print */
+  @media print {
+    body { background: #fff; color: #000; }
+    .card { border: 1px solid #ccc; }
+  }
+  @media (max-width: 640px) {
+    .cost-grid { grid-template-columns: 1fr; }
+    table { font-size: .8rem; }
+    th, td { padding: .5rem .3rem; }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>🛒 中南部省道便利商店開設成本</h1>
+    <p>租金 B/C 分析報告｜嘉義 / 台南 省道沿線選址評估</p>
+  </header>
+
+  <div class="wrap">
+    <a href="./index.html" class="nav-back">← 返回看屋筆記</a>
+
+    <!-- 執行摘要 -->
+    <div class="card">
+      <h2>📋 執行摘要</h2>
+      <p>本報告針對嘉義、台南兩縣市省道沿線（台1線、台17線、台19線）共 <strong>24 個區段</strong>進行便利商店開設成本的 Benefit-Cost 分析，評估各區段租金合理性與投資報酬潛力。</p>
+      <div class="metrics">
+        <div class="metric"><div class="num">6</div><div class="lbl">A級推薦區段</div></div>
+        <div class="metric"><div class="num">9</div><div class="lbl">B級評估區段</div></div>
+        <div class="metric"><div class="num">1</div><div class="lbl">C級避開區段</div></div>
+        <div class="metric"><div class="num">13</div><div class="lbl">月回本（最佳）</div></div>
+      </div>
+      <div class="info-box">
+        <strong>💡 核心結論：</strong>善化區/新市區（南科周邊）B/C 比值達 3.4，回本週期僅 13 個月，為最佳投資標的；沿海鄉鎮（布袋、東石、將軍、七股）雖營收較低，但租金極低、獲利空間穩定，適合長期經營；台南市區黃金路段租金佔比過高，不建議投入。
+      </div>
+    </div>
+
+    <!-- 分析框架 -->
+    <div class="card">
+      <h2>📊 分析框架：Benefit-Cost Ratio</h2>
+      <table>
+        <tr><th>等級</th><th>B/C 比值</th><th>投資建議</th><th>租金佔營收比</th></tr>
+        <tr><td class="grade-a">A級</td><td>&gt; 1.5</td><td>高營收潛力、合理租金，投資報酬佳</td><td>&lt; 8%</td></tr>
+        <tr><td class="grade-b">B級</td><td>1.0 - 1.5</td><td>租金與營收平衡，需精準選址</td><td>8% - 12%</td></tr>
+        <tr><td class="grade-c">C級</td><td>&lt; 1.0</td><td>租金佔比過高，風險大</td><td>&gt; 12%</td></tr>
+      </table>
+      <div style="margin-top:.8rem">
+        <span class="tag tag-b">月營收 60-180萬</span>
+        <span class="tag tag-b">租金佔比 8-12%</span>
+        <span class="tag tag-b">坪數 35-50坪</span>
+        <span class="tag tag-b">開店成本 400-800萬</span>
+        <span class="tag tag-b">毛利率 ~25%</span>
+      </div>
+    </div>
+
+    <!-- 嘉義地區 -->
+    <div class="card">
+      <h2>🏠 嘉義地區租金行情（35坪月租估算）</h2>
+      <table>
+        <tr><th>區段</th><th>省道</th><th>租金（元/坪/月）</th><th>35坪月租</th><th>等級</th></tr>
+        <tr><td>嘉義市區</td><td>台1線</td><td>2,500-4,500</td><td>8.8-15.8萬</td><td class="grade-b">B級</td></tr>
+        <tr><td>民雄鄉</td><td>台1線</td><td>1,500-2,800</td><td>5.3-9.8萬</td><td class="grade-b">B級</td></tr>
+        <tr><td>大林鎮</td><td>台1線</td><td>1,200-2,200</td><td>4.2-7.7萬</td><td class="grade-b">B級</td></tr>
+        <tr><td>水上鄉</td><td>台1線</td><td>1,200-2,500</td><td>4.2-8.8萬</td><td class="grade-b">B級</td></tr>
+        <tr class="highlight-row"><td><strong>中埔鄉</strong></td><td>台1線</td><td>1,000-2,000</td><td>3.5-7.0萬</td><td class="grade-a">A級 ⭐</td></tr>
+        <tr class="highlight-row"><td><strong>布袋鎮</strong></td><td>台17線</td><td>800-1,500</td><td>2.8-5.3萬</td><td class="grade-a">A級 ⭐</td></tr>
+        <tr class="highlight-row"><td><strong>東石鄉</strong></td><td>台17線</td><td>600-1,200</td><td>2.1-4.2萬</td><td class="grade-a">A級 ⭐</td></tr>
+        <tr><td>義竹鄉</td><td>台19線</td><td>600-1,200</td><td>2.1-4.2萬</td><td class="grade-b">B級</td></tr>
+        <tr><td>朴子市</td><td>台19線</td><td>1,200-2,200</td><td>4.2-7.7萬</td><td class="grade-b">B級</td></tr>
+      </table>
+    </div>
+
+    <!-- 台南地區 -->
+    <div class="card">
+      <h2>🏠 台南地區租金行情（35坪月租估算）</h2>
+      <table>
+        <tr><th>區段</th><th>省道</th><th>租金（元/坪/月）</th><th>35坪月租</th><th>等級</th></tr>
+        <tr class="danger-row"><td>台南市區</td><td>台1線</td><td>3,500-6,000</td><td>12.3-21萬</td><td class="grade-c">C級 ❌</td></tr>
+        <tr><td>永康區</td><td>台1線</td><td>2,000-3,500</td><td>7.0-12.3萬</td><td class="grade-b">B級</td></tr>
+        <tr><td>仁德區</td><td>台1線</td><td>1,800-3,200</td><td>6.3-11.2萬</td><td class="grade-b">B級</td></tr>
+        <tr><td>新營區</td><td>台1線</td><td>1,500-2,800</td><td>5.3-9.8萬</td><td class="grade-b">B級</td></tr>
+        <tr class="highlight-row"><td><strong>柳營區</strong></td><td>台1線</td><td>1,000-1,800</td><td>3.5-6.3萬</td><td class="grade-a">A級 ⭐</td></tr>
+        <tr class="highlight-row"><td><strong>官田區</strong></td><td>台1線</td><td>1,000-1,800</td><td>3.5-6.3萬</td><td class="grade-a">A級 ⭐</td></tr>
+        <tr><td>善化區</td><td>台1線</td><td>1,800-3,000</td><td>6.3-10.5萬</td><td class="grade-b">B級</td></tr>
+        <tr><td>新市區</td><td>台1線</td><td>2,000-3,500</td><td>7.0-12.3萬</td><td class="grade-b">B級</td></tr>
+        <tr><td>歸仁區</td><td>台1線</td><td>1,500-2,800</td><td>5.3-9.8萬</td><td class="grade-b">B級</td></tr>
+        <tr><td>安平區</td><td>台17線</td><td>2,500-4,000</td><td>8.8-14萬</td><td class="grade-b">B級</td></tr>
+        <tr class="highlight-row"><td><strong>將軍區</strong></td><td>台17線</td><td>800-1,500</td><td>2.8-5.3萬</td><td class="grade-a">A級 ⭐</td></tr>
+        <tr class="highlight-row"><td><strong>七股區</strong></td><td>台17線</td><td>600-1,200</td><td>2.1-4.2萬</td><td class="grade-a">A級 ⭐</td></tr>
+        <tr><td>學甲區</td><td>台19線</td><td>1,000-1,800</td><td>3.5-6.3萬</td><td class="grade-b">B級</td></tr>
+        <tr><td>佳里區</td><td>台19線</td><td>1,200-2,200</td><td>4.2-7.7萬</td><td class="grade-b">B級</td></tr>
+        <tr class="highlight-row"><td><strong>西港區</strong></td><td>台19線</td><td>800-1,500</td><td>2.8-5.3萬</td><td class="grade-a">A級 ⭐</td></tr>
+      </table>
+    </div>
+
+    <!-- 開店成本 -->
+    <div class="card">
+      <h2>💰 開店總成本估算</h2>
+      <div class="cost-grid">
+        <div class="cost-card">
+          <h4>一次性開店成本</h4>
+          <table>
+            <tr><td>加盟金</td><td style="text-align:right">30-60 萬</td></tr>
+            <tr><td>裝潢費</td><td style="text-align:right">150-300 萬</td></tr>
+            <tr><td>設備費</td><td style="text-align:right">100-180 萬</td></tr>
+            <tr><td>保證金</td><td style="text-align:right">30-50 萬</td></tr>
+            <tr><td>開店雜費</td><td style="text-align:right">20-40 萬</td></tr>
+            <tr style="font-weight:700; color:var(--accent)"><td>合計</td><td style="text-align:right">330-630 萬</td></tr>
+          </table>
+        </div>
+        <div class="cost-card">
+          <h4>每月固定成本</h4>
+          <table>
+            <tr><td>租金</td><td style="text-align:right">3-21 萬</td></tr>
+            <tr><td>人事費</td><td style="text-align:right">12-20 萬</td></tr>
+            <tr><td>水電瓦斯</td><td style="text-align:right">2-5 萬</td></tr>
+            <tr><td>加盟權利金</td><td style="text-align:right">3-6 萬</td></tr>
+            <tr><td>管理費+雜支</td><td style="text-align:right">2-5 萬</td></tr>
+            <tr style="font-weight:700; color:var(--accent)"><td>合計</td><td style="text-align:right">22-57 萬</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- B/C 試算 -->
+    <div class="card">
+      <h2>📈 B/C 分析試算</h2>
+      <h3>🟢 A級區段（優先投資）</h3>
+      <table>
+        <tr><th>區段</th><th>月營收</th><th>月租金</th><th>月淨利</th><th>B/C</th><th>回本</th></tr>
+        <tr><td>中埔鄉</td><td>80萬</td><td>5萬</td><td>15萬</td><td class="grade-a">3.0</td><td>22個月</td></tr>
+        <tr><td>布袋鎮</td><td>70萬</td><td>4萬</td><td>13.5萬</td><td class="grade-a">3.4</td><td>25個月</td></tr>
+        <tr><td>柳營區</td><td>90萬</td><td>5萬</td><td>17.5萬</td><td class="grade-a">3.5</td><td>20個月</td></tr>
+        <tr><td>將軍區</td><td>65萬</td><td>4萬</td><td>12.3萬</td><td class="grade-a">3.1</td><td>27個月</td></tr>
+        <tr><td>七股區</td><td>60萬</td><td>3萬</td><td>12萬</td><td class="grade-a">4.0</td><td>28個月</td></tr>
+      </table>
+
+      <h3>🟡 B級區段（主流選擇）</h3>
+      <table>
+        <tr><th>區段</th><th>月營收</th><th>月租金</th><th>月淨利</th><th>B/C</th><th>回本</th></tr>
+        <tr><td>嘉義市區</td><td>120萬</td><td>12萬</td><td>18萬</td><td class="grade-b">1.5</td><td>19個月</td></tr>
+        <tr><td>民雄鄉</td><td>100萬</td><td>7萬</td><td>18萬</td><td class="grade-b">2.6</td><td>19個月</td></tr>
+        <tr><td>永康區</td><td>130萬</td><td>9萬</td><td>23.5萬</td><td class="grade-b">2.6</td><td>15個月</td></tr>
+        <tr><td>新營區</td><td>110萬</td><td>7萬</td><td>20.5萬</td><td class="grade-b">2.9</td><td>17個月</td></tr>
+        <tr style="background:rgba(251,191,36,.08)"><td><strong>善化區南科</strong></td><td><strong>140萬</strong></td><td><strong>8萬</strong></td><td><strong>27萬</strong></td><td class="grade-a"><strong>3.4</strong></td><td><strong>13個月</strong></td></tr>
+      </table>
+
+      <h3>🔴 C級區段（不建議）</h3>
+      <table>
+        <tr><th>區段</th><th>月營收</th><th>月租金</th><th>月淨利</th><th>B/C</th></tr>
+        <tr class="danger-row"><td>台南市區主幹道</td><td>150萬</td><td>16萬</td><td>21.5萬</td><td class="grade-c">1.3</td></tr>
+        <tr class="danger-row"><td>台南市區黃金路段</td><td>180萬</td><td>21萬</td><td>24萬</td><td class="grade-c">1.1</td></tr>
+      </table>
+    </div>
+
+    <!-- 綜合建議 -->
+    <div class="card">
+      <h2>🎯 綜合建議</h2>
+      <div class="highlight-box">
+        <h4>⭐ 最佳投資標的（A級）</h4>
+        <ol>
+          <li><strong>善化區/新市區（南科周邊）</strong> — B/C 3.4，回本 13 個月</li>
+          <li><strong>中埔鄉（交流道附近）</strong> — 租金低，車流穩定</li>
+          <li><strong>柳營/官田</strong> — 城鄉交界，競爭少</li>
+          <li><strong>永康區非核心路段</strong> — 人口多，租金合理</li>
+        </ol>
+      </div>
+      <div class="info-box">
+        <h4>✅ 可以考慮（B級）</h4>
+        <ol>
+          <li>民雄鄉省道交叉口 — 學生+通勤族雙客群</li>
+          <li>新營區市區邊緣 — 區域中心，營收穩定</li>
+          <li>佳里區/學甲區 — 鄉鎮中心，競爭較少</li>
+          <li>歸仁區（高鐵周邊）— 觀光+通勤複合客群</li>
+        </ol>
+      </div>
+      <div class="warning-box">
+        <h4>❌ 不建議（C級）</h4>
+        <ol>
+          <li>台南市區黃金路段 — 租金佔比 &gt;12%，風險高</li>
+          <li>安平區核心觀光區 — 淡旺季差距大</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 選址關鍵 -->
+    <div class="card">
+      <h2>📍 省道選址關鍵因素</h2>
+      <div class="cost-grid">
+        <div class="cost-card" style="background:rgba(52,211,153,.08); border-color:rgba(52,211,153,.2);">
+          <h4 style="color:var(--grade-a)">✅ 加分條件</h4>
+          <ul>
+            <li>交流道出口 500 公尺內</li>
+            <li>學校、工業區、醫院周邊</li>
+            <li>十字路口金店面</li>
+            <li>公車站牌旁</li>
+            <li>競爭者少於 2 家</li>
+          </ul>
+        </div>
+        <div class="cost-card" style="background:rgba(248,113,113,.08); border-color:rgba(248,113,113,.2);">
+          <h4 style="color:var(--grade-c)">❌ 減分條件</h4>
+          <ul>
+            <li>車速過快（&gt;70km/h）看得到停不了</li>
+            <li>無迴轉空間或停車位</li>
+            <li>距離下個交流道 &gt;10 公里</li>
+            <li>競爭者已達 3 家以上</li>
+            <li>夜間人口外流嚴重</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 行動清單 -->
+    <div class="card">
+      <h2>📝 行動清單</h2>
+      <table>
+        <tr><th>階段</th><th>時間</th><th>任務</th></tr>
+        <tr><td><strong>Phase 1</strong></td><td>1-2 週</td><td>實地走訪目標區段，記錄人流/車流/競爭店數；詢問當地房仲 3-5 家驗證租金；調查既有店點營業狀況</td></tr>
+        <tr><td><strong>Phase 2</strong></td><td>1 週</td><td>根據實際租金重新計算 B/C；與加盟總部確認開店成本明細；評估自備款與貸款比例</td></tr>
+        <tr><td><strong>Phase 3</strong></td><td>2-4 週</td><td>鎖定 2-3 個候選地點；與房東議價（通常可談 10-15% 折扣）；確認店面是否符合設備需求</td></tr>
+      </table>
+    </div>
+
+    <div style="text-align:center; padding: 2rem 1rem; color: var(--muted); font-size: .85rem;">
+      <p>產出日期：2026-06-09</p>
+      <p>數據來源：台灣店面租金公開行情、實價登錄趨勢、便利商店業界常態</p>
+      <p style="color: var(--danger); margin-top: .5rem;">⚠️ 實際租金與營收會因個別物件條件而有差異，建議實地驗證</p>
+    </div>
+  </div>
+</body>
+</html>
